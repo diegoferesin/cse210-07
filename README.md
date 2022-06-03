@@ -31,6 +31,13 @@ root                    (project root folder)
 * Python 3.8.0
 * Raylib Python CFFI 3.7
 
-## Authors
 ---
-* # TODO: Add your name and email here
+## Authors
+
+- Diego Feresin (diegoferesin@gmail.com)
+- Emma Lund (lun21010@byui.edu)
+- Nestor Rivera (riv21007@byui.edu)
+- Juan Castellani (cas22009@byui.edu)
+- Kennette Guevara (rod21023@byui.edu)
+---
+
