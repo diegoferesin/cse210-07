@@ -2,7 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
-from game.casting.artifact import Artifact
+from game.casting.artifact import Item
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -21,7 +21,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Greed"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
@@ -71,12 +71,16 @@ def main():
         b = random.randint(0, 255)
         color = Color(r, g, b)
         
-        artifact = Artifact()
-        artifact.set_text(text)
+        artifact = Item()
+        artifact.set_item_type()
+        if artifact.get_item_type() == "rock":
+            artifact.set_text("o")
+        elif artifact.get_item_type() == "gem":
+            artifact.set_text("*")
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_message(message)
+        artifact.get_message()
         cast.add_actor("artifacts", artifact)
     
     # start the game
