@@ -24,3 +24,6 @@ class Item(Actor):
         elif self._rock_or_gem == "gem":
             self._message = "Nice!"
         pass
+
+    def set_message(self, message):
+        self._message = message
