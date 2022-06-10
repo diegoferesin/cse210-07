@@ -12,7 +12,7 @@ ROWS = 40
 
 
 class Item(Actor):
-    def __init(self):
+    def __init__(self):
         super().__init__()
         self._rock_or_gem = ""
         self._message = ""

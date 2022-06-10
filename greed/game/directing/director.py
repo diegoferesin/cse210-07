@@ -19,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self.points = 0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -53,7 +54,7 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("")
+        banner.set_text("Score: " + str(self.points))
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
@@ -65,7 +66,13 @@ class Director:
                 cast.remove_actor("artifacts", artifact)
             if robot.get_position().equals(artifact.get_position()):
                 message = artifact.get_message()
-                banner.set_text(message)    
+                if artifact.get_item_type() == "rock":
+                    self.points -= 1
+                    artifact.set_message("Oops! That was a rock") 
+                elif artifact.get_item_type() == "gem":
+                    self.points += 1
+                    artifact.set_message("Nice!")
+                banner.set_text("Score: " + str(self.points))    
 
         if len(artifacts) < 40:
             Item.generate_random_item()        
