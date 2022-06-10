@@ -37,7 +37,6 @@ class Item(Actor):
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.get_message()
 
     def set_item_type(self):
         num = random.randint(1,2)
@@ -51,11 +50,7 @@ class Item(Actor):
         return self._rock_or_gem
 
     def get_message(self):
-        if self._rock_or_gem == "rock":
-            self._message = "Oops! That was a rock!"
-        elif self._rock_or_gem == "gem":
-            self._message = "Nice!"
-        pass
+        return self._message
 
     def set_message(self, message):
         self._message = message

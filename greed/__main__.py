@@ -38,6 +38,13 @@ def main():
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)
+
+    banner2 = Actor()
+    banner2.set_text("Go!")
+    banner2.set_font_size(FONT_SIZE)
+    banner2.set_color(WHITE)
+    banner2.set_position(Point(700, 0))
+    cast.add_actor("banners", banner2)
     
     # create the robot
     x = int(MAX_X / 2)

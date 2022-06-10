@@ -33,6 +33,7 @@ class Director:
             self._do_updates(cast)
             self._do_outputs(cast)
         self._video_service.close_window()
+        print("Great job! You finished with a score of: " + str(self.points))
 
     def _get_inputs(self, cast):
         """Gets directional input from the keyboard and applies it to the robot.
@@ -51,6 +52,7 @@ class Director:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
+        second_banner = cast.get_actors("banners")[-1]
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
 
@@ -72,7 +74,8 @@ class Director:
                 elif artifact.get_item_type() == "gem":
                     self.points += 1
                     artifact.set_message("Nice!")
-                banner.set_text("Score: " + str(self.points))    
+                banner.set_text("Score: " + str(self.points))  
+                second_banner.set_text(artifact.get_message())
 
         if len(artifacts) < 40:
             Item.generate_random_item()        
