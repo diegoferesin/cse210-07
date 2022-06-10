@@ -1,3 +1,5 @@
+from game.casting.artifact import Item
+
 class Director:
     """A person who directs the game. 
     
@@ -57,9 +59,16 @@ class Director:
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
+            artifact.fall(max_y)
+            artifact.move_next(max_x, max_y)
+            if artifact.get_position().get_y() > robot.get_position().get_y()+5:
+                cast.remove_actor("artifacts", artifact)
             if robot.get_position().equals(artifact.get_position()):
                 message = artifact.get_message()
                 banner.set_text(message)    
+
+        if len(artifacts) < 40:
+            Item.generate_random_item()        
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.

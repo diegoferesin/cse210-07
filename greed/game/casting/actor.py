@@ -115,3 +115,8 @@ class Actor:
             velocity (Point): The given velocity.
         """
         self._velocity = velocity
+
+    def fall(self, max_y):
+        x = (self._position.get_x())
+        y = (self._position.get_y() + 1) % max_y
+        self._position = Point(x, y)
