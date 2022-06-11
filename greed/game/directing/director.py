@@ -85,6 +85,9 @@ class Director:
                 elif artifact.get_item_type() == "gem":
                     self.points += 1
                     artifact.set_message("Nice!")
+                elif artifact.get_item_type() == "asteroid":
+                    self.points -= 2
+                    artifact.set_message("Oops! That was an asteroid")
                 banner.set_text("Score: " + str(self.points))  
                 second_banner.set_text(artifact.get_message())
         

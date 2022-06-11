@@ -85,6 +85,9 @@ class Cast:
             self._actors[group].remove(actor)
 
     def generate_random_item(self):
+
+        """ Generate random items in the screen"""
+
         x = random.randint(1, COLS - 1)
         y = 0
         position = Point(x, y)
@@ -101,6 +104,8 @@ class Cast:
             artifact.set_text("o")
         elif artifact.get_item_type() == "gem":
             artifact.set_text("*")
+        elif artifact.get_item_type() == "asteroid":
+            artifact.set_text("oo")
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
