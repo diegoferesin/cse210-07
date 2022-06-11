@@ -117,6 +117,11 @@ class Actor:
         self._velocity = velocity
 
     def fall(self, max_y):
+        """Moves the actor increasingly down
+        
+        Args:
+            max_y (int): the current y position of the actor
+        """
         x = (self._position.get_x())
         y = (self._position.get_y() + 1) % max_y
         self._position = Point(x, y)

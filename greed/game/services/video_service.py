@@ -109,6 +109,7 @@ class VideoService:
             pyray.draw_line(x, 0, x, self._height, pyray.GRAY)
 
     def get_time(self):
+        '''Keeps track of amount of time window was open'''
         timer = pyray.get_time()
 
         return timer
