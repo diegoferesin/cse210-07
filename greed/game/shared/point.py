@@ -43,6 +43,13 @@ class Point:
         """
         return self._x == other.get_x() and self._y == other.get_y()
 
+    def y_is_between(self, other, number):
+
+        y = self._y - other.get_y()
+        
+
+        return self._x == other.get_x() and y <= 1 and y >= -1
+
     def get_x(self):
         """Gets the horizontal distance.
         

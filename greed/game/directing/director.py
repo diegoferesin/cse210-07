@@ -73,7 +73,7 @@ class Director:
             artifact.move_next(max_x, max_y)
             if artifact.get_position().get_y() > robot.get_position().get_y()+5:
                 cast.remove_actor("artifacts", artifact)
-            if robot.get_position().equals(artifact.get_position()):
+            if robot.get_position().y_is_between(artifact.get_position(), 1):
                 cast.remove_actor("artifacts", artifact)
                 message = artifact.get_message()
                 if artifact.get_item_type() == "rock":
