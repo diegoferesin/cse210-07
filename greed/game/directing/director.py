@@ -1,4 +1,5 @@
 from game.casting.artifact import Item
+import asyncio
 
 class Director:
     """A person who directs the game. 
@@ -20,6 +21,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         self.points = 0
+        self.timer = 0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -51,6 +53,11 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
+
+        async def actor_generation(cast, artifacts):
+            await asyncio.sleep(1)
+            cast.add_actor("artifacts", cast.generate_random_item())
+
         banner = cast.get_first_actor("banners")
         second_banner = cast.get_actors("banners")[-1]
         robot = cast.get_first_actor("robots")
@@ -77,9 +84,12 @@ class Director:
                     artifact.set_message("Nice!")
                 banner.set_text("Score: " + str(self.points))  
                 second_banner.set_text(artifact.get_message())
+        
+        if (self._video_service.get_time() - self.timer) > 0.7:
+            self.timer=self._video_service.get_time()
+            cast.add_actor("artifacts", cast.generate_random_item())
+        
 
-        if len(artifacts) < 40:
-            Item.generate_random_item()        
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.

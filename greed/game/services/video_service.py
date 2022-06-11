@@ -107,3 +107,8 @@ class VideoService:
             pyray.draw_line(0, y, self._width, y, pyray.GRAY)
         for x in range(0, self._width, self._cell_size):
             pyray.draw_line(x, 0, x, self._height, pyray.GRAY)
+
+    def get_time(self):
+        timer = pyray.get_time()
+
+        return timer
