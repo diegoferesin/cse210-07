@@ -67,6 +67,7 @@ class Director:
             if artifact.get_position().get_y() > robot.get_position().get_y()+5:
                 cast.remove_actor("artifacts", artifact)
             if robot.get_position().equals(artifact.get_position()):
+                cast.remove_actor("artifacts", artifact)
                 message = artifact.get_message()
                 if artifact.get_item_type() == "rock":
                     self.points -= 1
