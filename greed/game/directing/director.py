@@ -77,8 +77,11 @@ class Director:
                 cast.remove_actor("artifacts", artifact)
                 message = artifact.get_message()
                 if artifact.get_item_type() == "rock":
-                    self.points -= 1
-                    artifact.set_message("Oops! That was a rock") 
+                    if self.points == 0:
+                        artifact.set_message("Oops! That was a rock") 
+                    else:
+                        self.points -= 1
+                        artifact.set_message("Oops! That was a rock") 
                 elif artifact.get_item_type() == "gem":
                     self.points += 1
                     artifact.set_message("Nice!")
