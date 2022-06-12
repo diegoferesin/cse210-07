@@ -1,6 +1,3 @@
-import os
-import random
-
 from game.casting.actor import Actor
 from game.casting.artifact import Item
 from game.casting.cast import Cast
@@ -26,12 +23,16 @@ WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
 
 
-def main():
-    
+def main():    
     """Create the objet cast """ 
     cast = Cast()
     
-    """ Create the banner to display in the game"""
+    create_banner(cast)    
+    create_robot(cast)   
+    initialize_services(cast)
+
+""" Create the banner to display in the game"""
+def create_banner(cast):
     banner = Actor()
     banner.set_text("Score: ")
     banner.set_font_size(FONT_SIZE)
@@ -45,8 +46,9 @@ def main():
     banner2.set_color(WHITE)
     banner2.set_position(Point(700, 0))
     cast.add_actor("banners", banner2)
-    
-    """Create the robot """
+
+"""Create the robot """
+def create_robot(cast):
     x = int(MAX_X / 2)
     y = int(MAX_Y - 619)
     position = Point(x, y)
@@ -58,7 +60,8 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
 
-    """ Initialize services that game use and start """
+""" Initialize services that game use and start """
+def initialize_services(cast):
     keyboard_service = KeyboardService(CELL_SIZE)
     video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
     director = Director(keyboard_service, video_service)
