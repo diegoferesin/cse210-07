@@ -1,4 +1,3 @@
-from game.casting.artifact import Item
 import asyncio
 
 class Director:
